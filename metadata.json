@@ -1,0 +1,7 @@
+{
+  "name": "StudioToHub - AI Studio to GitHub Pipeline",
+  "description": "Deterministic deployment pipeline and specification standard connecting Google AI Studio applications directly to GitHub Pages hosting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
