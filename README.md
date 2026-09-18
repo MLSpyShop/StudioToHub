@@ -1,59 +1,82 @@
 # StudioToHub
 
-A deployment acceleration toolkit for Google AI Studio developers who want to turn fast prototypes into polished, GitHub Pages-ready Vite apps without the usual static hosting headaches.
+Deploy AI-generated Vite apps to GitHub Pages with confidence.
+
+A developer-first deployment toolkit for teams building in Google AI Studio and shipping static frontends with predictable, production-ready asset handling.
 
 Live demo:
 
 - [Open the app](https://mlspyshop.github.io/StudioToHub/)
 
-## Why Google Developers use StudioToHub
+## Why this project exists
 
-StudioToHub solves a real production problem: AI-generated Vite apps often work locally but break when deployed to GitHub Pages because of absolute asset paths. This project turns that fragile workflow into a repeatable, confidence-building deployment standard.
+AI-generated frontend apps are fast to create, but they often fail when published to GitHub Pages. The most common issue is not app logic or React code — it is the static hosting configuration. Generated Vite apps frequently ship with absolute asset paths that work in local development but break in GitHub Pages deployments.
 
-Built for developers working in:
+StudioToHub exists to remove that uncertainty.
 
-- Google AI Studio
-- Vite + React
-- GitHub Pages hosting
-- Static frontends that need reliable browser asset loading
+It gives developers a clear, repeatable deployment standard for taking a Google AI Studio-generated project and turning it into a reliable GitHub Pages site without the usual trial-and-error debugging cycle.
 
-The result is faster shipping, fewer broken deployments, and a clearer path from prototype to published web app.
+## Built for Google Developers and AI-assisted workflows
 
-## What this product does
+StudioToHub is designed for the modern developer workflow:
 
-StudioToHub packages a tested deployment blueprint for a 4-step release flow:
+- Google AI Studio for rapid prototyping
+- Vite + React for fast UI building
+- GitHub Pages for lightweight static hosting
+- AI-assisted generation with production deployment discipline
+
+This project exists for one reason: to make AI-generated apps easier to publish, trust, and scale.
+
+## The problem we solve
+
+When a static site is deployed to GitHub Pages, asset paths must be treated carefully. A common Vite setup uses absolute paths that are valid during local development but fail in production static hosting. The result is broken CSS, missing JS bundles, and 404 asset errors that look like a code problem even when the real issue is deployment configuration.
+
+StudioToHub makes this transparent and fixes it with a proven pattern:
+
+- relative asset paths
+- GitHub Pages-friendly build configuration
+- deployment guidance based on real production constraints
+- a repeatable process for shipping without guesswork
+
+## What StudioToHub includes
+
+This project packages a practical deployment framework for a 4-step release flow:
 
 1. Download the official specification PDF
 2. Upload it to Google AI Studio
 3. Copy and send the master directive prompt
 4. Configure GitHub Pages and deploy
 
-It explains the root cause of the common deployment failure—absolute asset paths—and gives the exact fix: relative base paths, static build discipline, and GitHub Pages-friendly project configuration.
+It also includes:
 
-## The sales advantage
+- a clear explanation of the asset path issue
+- a GitHub Pages deployment workflow
+- a deploy-ready prompt for AI Studio
+- a specification viewer and PDF export experience
+- a cleaner path from prototype to published app
 
-If your team is building fast with AI-assisted generation, the biggest hidden cost is deployment reliability.
+## Why teams adopt it
 
-StudioToHub gives you:
+For product teams and developers shipping AI-generated frontends, time-to-publish matters. The hidden cost of broken deployments is not just a few minutes of debugging — it is delayed launches, lost confidence, and friction between prototype and production.
 
-- A faster path from AI-generated app to published app
-- A predictable GitHub Pages deployment workflow
-- Clear documentation for developers and teams
-- Reduced time spent debugging broken asset references
-- A reusable standard for shipping static frontends with confidence
+StudioToHub helps teams:
 
-This is not just a demo. It is a repeatable deployment framework designed for modern AI-assisted software workflows.
+- ship faster with fewer deployment blockers
+- reduce time spent debugging static hosting issues
+- standardize AI-generated app publishing workflows
+- increase confidence in GitHub Pages deployments
 
-## Built for the modern developer stack
+## Product snapshot
 
-StudioToHub is designed for the ecosystem developers actually use:
+StudioToHub is a deployment acceleration toolkit for static web apps built with AI-assisted generation pipelines.
 
-- Vite for modern frontend builds
-- React for rapid UI iteration
-- GitHub Pages for simple static hosting
-- Google AI Studio for fast AI-assisted app generation
+It is built to answer a simple question:
 
-## Architecture
+How do we take a working AI-generated Vite app and publish it reliably to GitHub Pages?
+
+The answer is a repeatable workflow, proof of the fix, and a deployment standard developers can trust.
+
+## Project structure
 
 - `index.html` — app entry point
 - `src/main.tsx` — React bootstrap
@@ -93,7 +116,7 @@ npm run preview
 The app turns a fragile, manual deployment process into a repeatable AI-assisted workflow:
 
 - fixes asset 404 issues through `base: './'`
-- documents GitHub Pages setup for production publishing
+- documents GitHub Pages publishing setup
 - provides a copyable prompt for AI Studio
 - includes a specification viewer and downloadable PDF export
 
