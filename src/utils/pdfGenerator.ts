@@ -263,7 +263,7 @@ export default defineConfig({
 
   y += 50;
 
-  const p3Bullet2 = `• Build and Reproducible Dependency Installation: Check out code using actions/checkout@v4 , spin up Node.js 20 with cache: 'npm' via actions/setup-node@v4 , install dependencies with 'npm ci' (ensuring reproducible, lockfile-backed builds), and build production assets with vite.`;
+  const p3Bullet2 = `• Build and Universal Dependency Installation: Check out code using actions/checkout@v4 , spin up Node.js 22 via actions/setup-node@v4 , install dependencies with 'npm install' (ensuring immediate reliability with or without lockfiles), and build production assets with vite.`;
   const p3b2Lines = doc.splitTextToSize(p3Bullet2, contentWidth);
   doc.text(p3b2Lines, margin, y, { lineHeightFactor: 1.4 });
 
@@ -283,7 +283,7 @@ export default defineConfig({
   doc.text('• contents: read    -> Allows checkout of the application repository', margin + 16, y + 48);
   doc.text('• pages: write       -> Grants authority to package and deploy Pages artifacts', margin + 16, y + 68);
   doc.text('• id-token: write    -> OIDC token authentication for secure deployment handshake', margin + 16, y + 88);
-  doc.text('• npm ci             -> Fast, reproducible CI dependency install via package-lock', margin + 16, y + 108);
+  doc.text('• npm install        -> Universal CI dependency install for Git/AI Studio exports', margin + 16, y + 108);
   doc.text('• configure-pages@v5 -> Native GitHub Pages asset metadata and configuration', margin + 16, y + 128);
 
   // ================= PAGE 4 =================
@@ -317,11 +317,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build application
         run: npm run build
