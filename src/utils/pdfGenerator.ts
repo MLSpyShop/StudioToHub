@@ -24,7 +24,7 @@ export function generateSpecificationPdf(): jsPDF {
     docInstance.setFont('helvetica', 'normal');
     docInstance.setFontSize(8);
     docInstance.setTextColor(120, 130, 145);
-    docInstance.text('AI STUDIO TO GITHUB PAGES DEPLOYMENT PIPELINE SPECIFICATION', margin, 28);
+    docInstance.text('STUDIOTOHUB • AI STUDIO TO GITHUB PAGES PIPELINE SPECIFICATION', margin, 28);
     docInstance.text(`marielandryspyshop.com`, pageWidth - margin, 28, { align: 'right' });
 
     // Footer
@@ -82,7 +82,7 @@ export function generateSpecificationPdf(): jsPDF {
   let kwY = y + 138;
   doc.setFontSize(9);
 
-  keywords.forEach((kw, idx) => {
+  keywords.forEach((kw) => {
     doc.setFont('helvetica', 'bold');
     const txtWidth = doc.getTextWidth(kw) + 16;
     if (kwX + txtWidth > margin + contentWidth - 16) {
@@ -103,7 +103,7 @@ export function generateSpecificationPdf(): jsPDF {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(18);
   doc.setTextColor(15, 23, 42);
-  doc.text(SPEC_METADATA.title, margin, y);
+  doc.text('StudioToHub: AI Studio to GitHub Pages Pipeline', margin, y);
 
   y += 24;
   doc.setFontSize(10.5);
@@ -187,7 +187,7 @@ export function generateSpecificationPdf(): jsPDF {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10.5);
   doc.setTextColor(51, 65, 85);
-  const scopeText = `This technical specification standardizes the automated transition of web applications generated via AI Studio into live production environments on GitHub Pages. By standardizing Vite configurations, continuous integration workflows, and secure environment variable injection, developers can eliminate manual build errors and runtime path failures.`;
+  const scopeText = `This technical specification standardizes the automated transition of web applications generated via AI Studio into live production environments on GitHub Pages. By standardizing Vite configurations, continuous integration workflows (using universal 'npm install' dependency resolution), and secure environment variable injection, developers can eliminate manual build errors and runtime path failures.`;
   const scopeLines = doc.splitTextToSize(scopeText, contentWidth);
   doc.text(scopeLines, margin, y, { lineHeightFactor: 1.4 });
 
@@ -263,7 +263,7 @@ export default defineConfig({
 
   y += 50;
 
-  const p3Bullet2 = `• Build and Secret Injection Sequence: Check out code using actions/checkout@v4 , spin up Node.js 20 via actions/setup-node@v4 , install dependencies, and inject API secrets directly into the build command:`;
+  const p3Bullet2 = `• Build and Universal Dependency Installation: Check out code using actions/checkout@v4 , spin up Node.js 20 via actions/setup-node@v4 , install dependencies with 'npm install' (ensuring compatibility even if lockfiles are uncommitted), and build production assets with vite.`;
   const p3b2Lines = doc.splitTextToSize(p3Bullet2, contentWidth);
   doc.text(p3b2Lines, margin, y, { lineHeightFactor: 1.4 });
 
@@ -271,11 +271,11 @@ export default defineConfig({
   y += 80;
   doc.setDrawColor(226, 232, 240);
   doc.setFillColor(248, 250, 252);
-  doc.roundedRect(margin, y, contentWidth, 120, 6, 6, 'FD');
+  doc.roundedRect(margin, y, contentWidth, 140, 6, 6, 'FD');
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(11);
   doc.setTextColor(15, 23, 42);
-  doc.text('Summary of Permissions & Secret Injection Mapping', margin + 16, y + 25);
+  doc.text('Summary of Permissions & Robust CI/CD Execution', margin + 16, y + 25);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
@@ -283,14 +283,15 @@ export default defineConfig({
   doc.text('• contents: read    -> Allows checkout of the application repository', margin + 16, y + 48);
   doc.text('• pages: write       -> Grants authority to package and deploy Pages artifacts', margin + 16, y + 68);
   doc.text('• id-token: write    -> OIDC token authentication for secure deployment handshake', margin + 16, y + 88);
-  doc.text('• env secret         -> Maps secrets.VITE_GEMINI_API_KEY into build environment', margin + 16, y + 108);
+  doc.text('• npm install        -> Resilient dependency resolution with or without lockfile', margin + 16, y + 108);
+  doc.text('• configure-pages@v5 -> Native GitHub Pages asset metadata and configuration', margin + 16, y + 128);
 
   // ================= PAGE 4 =================
   doc.addPage();
   setPageFrame(doc, 4);
   y = 60;
 
-  const deployYaml = `name: Deploy static content to Pages
+  const deployYaml = `name: Deploy to GitHub Pages
 
 on:
   push:
@@ -304,13 +305,10 @@ permissions:
 
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: \${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -324,9 +322,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build static production bundle
-        env:
-          VITE_GEMINI_API_KEY: \${{ secrets.VITE_GEMINI_API_KEY }}
+      - name: Build application
         run: npm run build
 
       - name: Setup Pages
@@ -337,6 +333,13 @@ jobs:
         with:
           path: './dist'
 
+  deploy:
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4`;
@@ -362,5 +365,5 @@ jobs:
 
 export function downloadSpecificationPdf(): void {
   const doc = generateSpecificationPdf();
-  doc.save('AI-Studio-to-GitHub-Pages-Deployment-Pipeline.pdf');
+  doc.save('StudioToHub-AI-Studio-to-GitHub-Pages-Deployment-Pipeline.pdf');
 }

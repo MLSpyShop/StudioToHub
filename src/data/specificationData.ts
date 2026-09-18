@@ -3,7 +3,7 @@ import { SpecPage } from '../types';
 export const MASTER_DIRECTIVE_PROMPT = `prepare the app for github deployment following the instructions in this pdf`;
 
 export const SPEC_METADATA = {
-  title: 'AI Studio to GitHub Pages Deployment Pipeline',
+  title: 'StudioToHub: AI Studio to GitHub Pages Deployment Pipeline',
   publisher: 'Marie Landry Spy Shop',
   publisherUrl: 'marielandryspyshop.com',
   accessType: 'Open Source / Public Open-Access Repository',
