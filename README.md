@@ -1,32 +1,68 @@
 # StudioToHub
 
-StudioToHub is a Vite + React app that packages a deterministic deployment standard for taking apps built in Google AI Studio and publishing them to GitHub Pages with the correct static asset configuration.
+A deployment acceleration toolkit for Google AI Studio developers who want to turn fast prototypes into polished, GitHub Pages-ready Vite apps without the usual static hosting headaches.
 
-You can open the deployed app here:
+Live demo:
 
 - [Open the app](https://mlspyshop.github.io/StudioToHub/)
 
-## What this project does
+## Why Google Developers use StudioToHub
 
-This project is a branded specification and workflow helper for a 4-step deployment pipeline:
+StudioToHub solves a real production problem: AI-generated Vite apps often work locally but break when deployed to GitHub Pages because of absolute asset paths. This project turns that fragile workflow into a repeatable, confidence-building deployment standard.
+
+Built for developers working in:
+
+- Google AI Studio
+- Vite + React
+- GitHub Pages hosting
+- Static frontends that need reliable browser asset loading
+
+The result is faster shipping, fewer broken deployments, and a clearer path from prototype to published web app.
+
+## What this product does
+
+StudioToHub packages a tested deployment blueprint for a 4-step release flow:
 
 1. Download the official specification PDF
 2. Upload it to Google AI Studio
 3. Copy and send the master directive prompt
 4. Configure GitHub Pages and deploy
 
-The app explains why AI Studio-generated Vite apps often break on GitHub Pages because of absolute asset paths, and then provides the exact fix: using relative Vite base paths, plus a deployment workflow that makes the static site reliable.
+It explains the root cause of the common deployment failure—absolute asset paths—and gives the exact fix: relative base paths, static build discipline, and GitHub Pages-friendly project configuration.
 
-## Project structure
+## The sales advantage
+
+If your team is building fast with AI-assisted generation, the biggest hidden cost is deployment reliability.
+
+StudioToHub gives you:
+
+- A faster path from AI-generated app to published app
+- A predictable GitHub Pages deployment workflow
+- Clear documentation for developers and teams
+- Reduced time spent debugging broken asset references
+- A reusable standard for shipping static frontends with confidence
+
+This is not just a demo. It is a repeatable deployment framework designed for modern AI-assisted software workflows.
+
+## Built for the modern developer stack
+
+StudioToHub is designed for the ecosystem developers actually use:
+
+- Vite for modern frontend builds
+- React for rapid UI iteration
+- GitHub Pages for simple static hosting
+- Google AI Studio for fast AI-assisted app generation
+
+## Architecture
 
 - `index.html` — app entry point
 - `src/main.tsx` — React bootstrap
 - `src/App.tsx` — main app shell
-- `src/components/` — UI sections for the workflow guide, modal, and header
-- `src/data/` — specification metadata and generated prompt content
-- `src/utils/` — PDF generation helpers
+- `src/components/` — workflow UI, modal, and navigation sections
+- `src/data/` — specification metadata and prompt content
+- `src/utils/` — PDF generation and helper utilities
 
-## Local development
+## Quick start
 
 Install dependencies:
 
@@ -34,13 +70,13 @@ Install dependencies:
 npm install
 ```
 
-Start the app:
+Run locally:
 
 ```bash
 npm run dev
 ```
 
-Build the production bundle:
+Build for production:
 
 ```bash
 npm run build
@@ -52,17 +88,17 @@ Preview the production build:
 npm run preview
 ```
 
-## Why the app exists
+## Why it matters
 
-The app turns a fragile manual deployment process into a repeatable AI-assisted workflow:
+The app turns a fragile, manual deployment process into a repeatable AI-assisted workflow:
 
 - fixes asset 404 issues through `base: './'`
-- documents the GitHub Pages publishing setup
+- documents GitHub Pages setup for production publishing
 - provides a copyable prompt for AI Studio
 - includes a specification viewer and downloadable PDF export
 
 ## Related links
 
-- [Deployed app](https://mlspyshop.github.io/StudioToHub/)
+- [Open the live app](https://mlspyshop.github.io/StudioToHub/)
 - [Package configuration](./package.json)
 - [Source app](./src/App.tsx)
