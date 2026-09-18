@@ -2,9 +2,9 @@
 
 StudioToHub is a Vite + React app that packages a deterministic deployment standard for taking apps built in Google AI Studio and publishing them to GitHub Pages with the correct static asset configuration.
 
-You can open the app entry page here:
+You can open the deployed app here:
 
-- [Open the app index](./index.html)
+- [Open the app](https://mlspyshop.github.io/StudioToHub/)
 
 ## What this project does
 
@@ -15,7 +15,7 @@ This project is a branded specification and workflow helper for a 4-step deploym
 3. Copy and send the master directive prompt
 4. Configure GitHub Pages and deploy
 
-The app explains why AI Studio-generated Vite apps often break on GitHub Pages because of absolute asset paths, and then provides the exact fix: using relative Vite base paths, plus a deployment workflow to publish the built app.
+The app explains why AI Studio-generated Vite apps often break on GitHub Pages because of absolute asset paths, and then provides the exact fix: using relative Vite base paths, plus a deployment workflow that makes the static site reliable.
 
 ## Project structure
 
@@ -63,6 +63,6 @@ The app turns a fragile manual deployment process into a repeatable AI-assisted 
 
 ## Related links
 
-- [App entry page](./index.html)
+- [Deployed app](https://mlspyshop.github.io/StudioToHub/)
 - [Package configuration](./package.json)
 - [Source app](./src/App.tsx)
